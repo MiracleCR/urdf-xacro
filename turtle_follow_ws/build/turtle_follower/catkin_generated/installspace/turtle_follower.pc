@@ -1,0 +1,8 @@
+prefix=/home/chenjiayi/turtle_follow_ws/install
+
+Name: turtle_follower
+Description: Description of turtle_follower
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

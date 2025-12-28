@@ -1,0 +1,19 @@
+<launch>
+    <node pkg="turtlesim" type="turtlesim_node" name="turtlesim_node" />
+
+    <node pkg="turtle_follower" type="leader.py" name="leader_node" output="screen" />
+
+    <node pkg="turtle_follower" type="multi_follower.py" name="follower_turtle2" output="screen">
+        <param name="follower_name" value="turtle2" />
+        <param name="leader_name" value="turtle1" />
+        <param name="spawn_x" value="2.0" />
+        <param name="spawn_y" value="5.0" />
+    </node>
+
+    <node pkg="turtle_follower" type="multi_follower.py" name="follower_turtle3" output="screen">
+        <param name="follower_name" value="turtle3" />
+        <param name="leader_name" value="turtle2" />
+        <param name="spawn_x" value="1.0" />
+        <param name="spawn_y" value="1.0" />
+    </node>
+</launch>

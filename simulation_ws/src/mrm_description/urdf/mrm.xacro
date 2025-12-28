@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find mrm_description)/urdf/links_joints.xacro" />
+    <xacro:include filename="$(find mrm_description)/urdf/robot_parameters.xacro" />
+    <m_link_box name="${l00}"
+            origin_rpy="0 0 0" origin_xyz="0 0 0"
+            mass="1024"
+            ixx="170.667" ixy="0" ixz="0"
+            iyy="170.667" iyz="0"
+            izz="170.667"
+            size="1 1 1" />
+
+    <m_joint name="${l00}__${l01}" type="revolute"
+            axis_xyz="0 0 1"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.5"
+            parent="${l00}" child="${l01}"
+            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+    <!-- <transmission name="trans_${l00}__${l01}">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${l00}__${l01}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_${l00}__${l01}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission> -->
+
+    <m_link_cylinder name="${l01}"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.2"
+            mass="157.633"
+            ixx="13.235" ixy="0" ixz="0"
+            iyy="13.235" iyz="0"
+            izz="9.655"
+            radius="0.35" length="0.4" />
+
+    <m_joint name="${l01}__${l02}" type="revolute"
+            axis_xyz="0 1 0"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.4"
+            parent="${l01}" child="${l02}"
+            limit_e="1000" limit_l="0" limit_u="0.5" limit_v="0.5" />
+
+    <!-- <transmission name="trans_${l01}_${l02}">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${l01}_${l02}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_${l01}_${l02}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission> -->
+
+    <m_link_cylinder name="${l02}"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.4"
+            mass="57.906"
+            ixx="12.679" ixy="0" ixz="0"
+            iyy="12.679" iyz="0"
+            izz="0.651"
+            radius="0.15" length="0.8" />
+
+    <m_joint name="${l02}__${l03}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 0.8"
+           parent="${l02}" child="${l03}"
+           limit_e="1000" limit_l="0" limit_u="0.75" limit_v="0.5" />
+
+    <m_link_cylinder name="${l03}"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.4"
+            mass="57.906"
+            ixx="12.679" ixy="0" ixz="0"
+            iyy="12.679" iyz="0"
+            izz="0.651"
+            radius="0.15" length="0.8" />
+
+    <m_joint name="${l03}__${l04}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 0.8"
+           parent="${l03}" child="${l04}"
+           limit_e="1000" limit_l="0" limit_u="0.75" limit_v="0.5" />
+
+    <m_link_cylinder name="${l04}"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.4"
+            mass="57.906"
+            ixx="12.679" ixy="0" ixz="0"
+            iyy="12.679" iyz="0"
+            izz="0.651"
+            radius="0.15" length="0.8" />
+
+    <m_joint name="${l04}__${l05}" type="revolute"
+           axis_xyz="0 0 1"
+           origin_rpy="0 0 0" origin_xyz="0 0 0.8"
+           parent="${l04}" child="${l05}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+    <m_link_cylinder name="${l05}"
+            origin_rpy="0 0 0" origin_xyz="0 0 0.125"
+            mass="18.056"
+            ixx="0.479" ixy="0" ixz="0"
+            iyy="0.479" iyz="0"
+            izz="0.204"
+            radius="0.15" length="0.25" />
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        </plugin>
+    </gazebo>
+</robot>
